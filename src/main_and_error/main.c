@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awilliam <awilliam@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: tony <tony@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:23:21 by awilliam          #+#    #+#             */
-/*   Updated: 2023/05/17 11:40:12 by awilliam         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:25:46 by tony             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	minishell(t_minishell *p, char *input)
 {
 	input = get_input(p, NULL, NULL, 1);
 	if (!input)
-		return (1);
+		return (0);
 	if (!*input)
 		return (free(input), -1);
 	add_history(input);
