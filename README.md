@@ -32,7 +32,7 @@ This enabled the next functions to easily identify special characters and place 
 
 ## Pipes / Child Processes
 
-Once the input is correctly parsed, it's time to sort it into categories. For example, the redirection characters ```<``` and ```>"```give a command its input and output, respectively. In the command above, the redirection characters tell the shell that the input is ```infile.txt``` and the output should go to ```outfile.txt```. 
+Once the input is correctly parsed, it's time to sort it into categories. For example, the redirection characters ```<``` and ```>```give a command its input and output, respectively. In the command above, the redirection characters tell the shell that the input is ```infile.txt``` and the output should go to ```outfile.txt```. 
 
 The pipe, ```|```, tells the shell that, instead of printing to the terminal, it should write into a pipe for another process to then work with. 
 
