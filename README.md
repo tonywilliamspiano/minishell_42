@@ -17,16 +17,16 @@ For example, the following command: ```"cat <infile.txt | grep "str" >outfile.tx
 
 Would come out as an array looking like this:
 
-```[
-    cat
-    <
-    infile.txt
-    |
-    grep
-    str
-    >
-    outfile.txt
-]```
+```c
+cat
+<
+infile.txt
+|
+grep
+str
+>
+outfile.txt
+```
 
 This enabled the next functions to easily identify special characters and place the commands, files, pipes, and redirections correctly. 
 
@@ -38,12 +38,12 @@ The pipe tells the shell that, instead of printing to the terminal, it should wr
 
 Our new shell command would then become a shorter array, excluding the input and output files. It now looks like this: 
 
-[
-    cat
-    |
-    grep
-    str
-]
+```c
+cat
+|
+grep
+str
+```
 
 Now, the shell will open a new process for each command. First, it will find and execute the binary for "cat" and then it will find and execute the binary for "grep" with the input "str". These binaries are located using the $PATH variable in the computer's environment, which is typically automatically set to point to the locations of system binaries. 
 
@@ -65,10 +65,14 @@ Although the builtin functions were handled by my partner, we tested them togeth
 
 In addition, we had to implement the interrupt (ctrl-D) and quit (ctrl-D) signals. The quit signal was straightforward - it just needed to exit the shell when applied to an empty prompt and do nothing otherwise. The interrupt signal was more interesting. 
 
-
+Basically, we reformatted the interrupt signal to interrupt the child processes of the shell instead of the shell itself. Then, we were able to see when the processes were interrupted and change our exit status to the correct value.
 
 ## Bonus features / fun stuff to try: 
 
 - Our shell works for unclosed quotes! Try something like the command: ```echo "hello```
 
-- 
+- Check out our heredoc implementation! Type ```cat << abc``` and the shell will take lines of input until one is equal to ```abc```. This even works with multiple heredocs! Try out ```cat << a > out | cat << b > out2 | cat << c > out3```. You can delimit the first heredoc with "a", the second with "b" and the third with "c", and each heredoc will appear in the correct file! 
+
+- Start the minishell program within itself and check out the SHLVL variable: ```echo $SHLVL```
+
+- Stop some commands with interrupt signals, like ```sleep 5```. You should get a new prompt and exit status should be 130. Test exit codes like this: ```echo $?```
