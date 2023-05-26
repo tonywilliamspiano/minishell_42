@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_shell_split.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awilliam <awilliam@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: tony <tony@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 10:31:14 by awilliam          #+#    #+#             */
-/*   Updated: 2023/05/11 18:17:06 by awilliam         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:28:15 by tony             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ static int	shell_split_helper(char *s, char **result, int i)
 		if (ft_strchr("<>|", s[len]) && !len)
 		{
 			len++;
-			if (s[len] == s[len - 1] \
-			|| (s[len] == '>' && s[len - 1] == '<'))
+			if (s[len] != '|' && (s[len] == s[len - 1] \
+			|| (s[len] == '>' && s[len - 1] == '<')))
 				len++;
 			break ;
 		}
