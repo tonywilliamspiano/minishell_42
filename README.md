@@ -1,2 +1,62 @@
 # minishell_42
 Reproducing the behavior of the Bourne Again Shell (BASH) in C.
+
+Aim of the Project
+The goal of this project is deceptively simple - code and recreate a shell environment just like the ones we use every day as coders. I'm going to first break down what I learned in the project and give a quick overview of the code, then walk you through downloading and compiling the shell. The project can be broken down into four parts: 
+
+- Parsing
+- Pipes / Child Processes
+- Builtin functions
+- Signals / Exit Status
+
+# Parsing
+
+The most difficult part of this project was receiving user input and parsing it in a coherent way for the subsequent functions to work with. Basically, I needed to take the user's input and split it into 'words' based on a few special characters, like ">", "<" or "|".
+
+For example, the following command: "cat <infile.txt | grep "str" >outfile.txt
+
+Would come out as an array looking like this:
+[
+    cat
+    <
+    infile.txt
+    |
+    grep
+    str
+    >
+    outfile.txt
+]
+
+This enabled the next functions to easily identify special characters and place the commands, files, pipes, and redirections correctly. 
+
+# Pipes / Child Processes
+
+Once the input is correctly parsed, it's time to sort it into categories. For example, the redirection characters "<" and ">" give a command its input and output, respectively. In the command above, the redirection characters tell the shell that the input is "infile.txt" and the output should go to "outfile.txt". 
+
+The pipe tells the shell that, instead of printing to the terminal, it should write into a pipe for another process to then work with. 
+
+Our new shell command would then become a shorter array, excluding the input and output files. It now looks like this: 
+
+[
+    cat
+    |
+    grep
+    str
+]
+
+Now, the shell will open a new process for each command. First, it will find and execute the binary for "cat" and then it will find and execute the binary for "grep" with the input "str". These binaries are located using the $PATH variable in the computer's environment, which is typically automatically set to point to the locations of system binaries. 
+
+Once all the processes are completed, the shell returns control to the user and repeats the whole process over again!
+
+# Builtin functions
+
+Although the builtin functions were handled by my partner, we tested them together and I contributed to a few bug fixes here and there. 
+
+
+
+# Signals
+
+In addition, we had to implement 
+
+Bonus features / fun stuff to try: 
+
