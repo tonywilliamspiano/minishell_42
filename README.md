@@ -1,7 +1,7 @@
 # minishell_42
 Reproducing the behavior of the Bourne Again Shell (BASH) in C.
 
-Aim of the Project
+## Aim of the Project
 The goal of this project is deceptively simple - code and recreate a shell environment just like the ones we use every day as coders. I'm going to first break down what I learned in the project and give a quick overview of the code, then walk you through downloading and compiling the shell. The project can be broken down into four parts: 
 
 - Parsing
