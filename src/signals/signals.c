@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awilliam <awilliam@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: tony <tony@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:43:50 by awilliam          #+#    #+#             */
-/*   Updated: 2023/05/04 18:18:13 by awilliam         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:23:36 by tony             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	sigint_handler_a(int signum)
 	rl_replace_line("", 0);
 	rl_on_new_line();
 	rl_redisplay();
-	g_es = 130;
+	g_es = 1;
 }
 
 void	sigint_handler_b(int signum)
@@ -51,6 +51,7 @@ void	check_signals(t_minishell *p)
 	if (WIFSIGNALED(p->exit_status) && p->exit_status == 2)
 	{
 		ft_putchar_fd('\n', 2);
-		p->exit_status = 130;
+		if (g_es == 130)
+			p->exit_status = 130;
 	}	
 }
