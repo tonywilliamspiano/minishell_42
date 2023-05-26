@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_split_utils_2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awilliam <awilliam@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: tony <tony@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:14:01 by awilliam          #+#    #+#             */
-/*   Updated: 2023/05/17 11:02:05 by awilliam         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:38:18 by tony             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	*expand_variables(t_minishell *p, char *s, char *orig_s, int i)
 	char	*ret;
 
 	ret = NULL;
-	if (s[0] == '$' && orig_s && !(s[1]))
+	if (s[0] == '$' && orig_s && is_apo(*orig_s))
 		s[0] = 0;
 	if (*s == 34 && orig_s)
 		string_shift(s);
