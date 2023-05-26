@@ -67,6 +67,14 @@ In addition, we had to implement the interrupt (ctrl-D) and quit (ctrl-D) signal
 
 Basically, we reformatted the interrupt signal to interrupt the child processes of the shell instead of the shell itself. Then, we were able to see when the processes were interrupted and change our exit status to the correct value.
 
+## Downloading and Compiling
+
+First, clone the repository onto your computer. Then try to compile with the Makefile with ```make all```. 
+
+If that doesn't work: the readline library we were using for this project sometimes doesn't contain all of the correct functions. Running the included 'fix.sh' script by one of the other 42 students downloads the correct readline library into a temporary folder on your computer. 
+
+If it still doesn't work after that, shoot me a message and I'll see what I can figure out. I've only tried the project on Mac, so I'm not sure what will happen on various Linux or Windows systems.
+
 ## Bonus features / fun stuff to try: 
 
 - Our shell works for unclosed quotes! Try something like the command: ```echo "hello```
