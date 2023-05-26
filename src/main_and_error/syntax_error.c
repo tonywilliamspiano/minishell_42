@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_error.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awilliam <awilliam@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: tony <tony@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 12:48:50 by awilliam          #+#    #+#             */
-/*   Updated: 2023/05/04 09:28:07 by awilliam         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:44:45 by tony             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ int	check_syntax(t_minishell *p, char **arr)
 	{
 		if (arr[i + 1] && special_no_quotes(arr[i], 0) \
 		&& special_no_quotes(arr[i + 1], 1))
+			return ((parse_error(p, arr[i + 1])), 1);
+		if (arr[i + 1] && !ft_strncmp(arr[i], "|", 2) \
+		&& !ft_strncmp(arr[i + 1], "|", 2))
 			return ((parse_error(p, arr[i + 1])), 1);
 		i++;
 	}
