@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awilliam <awilliam@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: tony <tony@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:06:34 by treeps            #+#    #+#             */
-/*   Updated: 2023/05/03 19:06:35 by awilliam         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:20:35 by tony             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,5 @@ int	cd(t_minishell *p, int forked)
 		return (free(path), ft_return(p, cd_error(p->input1[1]), forked));
 	free(path);
 	update_env(p, pwd_before);
-	return (0);
+	return (ft_return(p, 0, forked));
 }
