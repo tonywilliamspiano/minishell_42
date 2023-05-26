@@ -11,7 +11,7 @@ The goal of this project is deceptively simple - code and recreate a shell envir
 
 ## Parsing
 
-The most difficult part of this project was receiving user input and parsing it in a coherent way for the subsequent functions to work with. Basically, I needed to take the user's input and split it into 'words' based on a few special characters, like ">", "<" or "|".
+The most difficult part of this project was receiving user input and parsing it in a coherent way for the subsequent functions to work with. Basically, I needed to take the user's input and split it into 'words' based on a few special characters, like ```>```, ```<``` or ```|```.
 
 For example, the following command: ```"cat <infile.txt | grep "str" >outfile.txt```
 
@@ -32,9 +32,9 @@ This enabled the next functions to easily identify special characters and place 
 
 ## Pipes / Child Processes
 
-Once the input is correctly parsed, it's time to sort it into categories. For example, the redirection characters "<" and ">" give a command its input and output, respectively. In the command above, the redirection characters tell the shell that the input is "infile.txt" and the output should go to "outfile.txt". 
+Once the input is correctly parsed, it's time to sort it into categories. For example, the redirection characters ```<``` and ```>"```give a command its input and output, respectively. In the command above, the redirection characters tell the shell that the input is ```infile.txt``` and the output should go to ```outfile.txt```. 
 
-The pipe tells the shell that, instead of printing to the terminal, it should write into a pipe for another process to then work with. 
+The pipe, ```|```, tells the shell that, instead of printing to the terminal, it should write into a pipe for another process to then work with. 
 
 Our new shell command would then become a shorter array, excluding the input and output files. It now looks like this: 
 
@@ -45,7 +45,7 @@ grep
 str
 ```
 
-Now, the shell will open a new process for each command. First, it will find and execute the binary for "cat" and then it will find and execute the binary for "grep" with the input "str". These binaries are located using the $PATH variable in the computer's environment, which is typically automatically set to point to the locations of system binaries. 
+Now, the shell will open a new process for each command. First, it will find and execute the binary for ```cat``` and then it will find and execute the binary for ```grep``` with the input ```str```. These binaries are located using the $PATH variable in the computer's environment, which is typically automatically set to point to the locations of system binaries. 
 
 Once all the processes are completed, the shell returns control to the user and repeats the whole process over again. We've got a working shell!
 
